@@ -1,0 +1,22 @@
+Class
+A class in java is a template, or blueprint, for objects. Everything in Java is associated with a class of some sort.
+Subclass
+A subclass in java is a miniature or child class that extends a parent class.
+Access
+There are three different types of access modifiers:
+
+Default; this access modifier is when the programmer does not specify which type of access a variable has within a class. The default is when the variable can only be accessed by classes in the same package.
+Private; this access modifier is when the variable is class specific. The variable is only accessible within that declared class.
+Public; this access modifier gives other classes access to this variable no matter where it is.
+Scope
+
+Scope is how much variables can access inside the region where they are created.
+
+As a computer scientist, write a scenario of when and how access modifiers could be used.
+
+
+A scenario where access modifiers could be used is...
+
+Is the research you conducted above useful only for Java? Why or why not?
+
+The research is/not useful for Java because...
