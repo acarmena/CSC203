@@ -10,15 +10,31 @@ Your mission is to write a program following these requirements:
     Use Random number generation at least 5 times in your program to make it come alive!
     Create a great User Experience (UX).
     Over comment your code with your own comments!
+
+Point System:
++11 - max amount of points per decision (33 total)
+
++10 for success high range
++5 for success mid range
++3 for success low range
+-10, 5, and 3 for failure, respectively.
+Each choice has the potential to gain a bonus point.
+
+End of Game Outcome Ranges:
+
+17 to 33 SSP: Full system recovery; GAIA trusts you.
+
+1 to 16 SSP: Partial recovery; AI autonomy continues.
+
+less than 0 (inclusive): Lockout; GAIA assumes full control.
 */
 
-import java.util.*;//imports the entire util from the java library
-import java.util.Scanner;
+import java.util.Scanner;//imports the entire util from the java library
 
 public class RandomMars //name/title Red Harvest
 {
     static int result = 0;
-    static int ssp = 100;
+    static int ssp = 0;
 
     public static int Dice()//start of random element "dice" method
     {
@@ -39,7 +55,7 @@ public class RandomMars //name/title Red Harvest
         System.out.println();//spacing for readability
 
         System.out.println("As a computer scientist with a background in computational biology. You're responsible for:");
-        System.out.println("\t 1. Maintaining software that powers the biosphere's agricultureal and research systerms.");
+        System.out.println("\t 1. Maintaining software that powers the biosphere's agricultureal and research systems.");
         System.out.println("\t 2. Ensuring data integrity for experiments involving Martian soil microbes, genetically modified crops, and terraforming bacteria.");
         System.out.println("\t 3. Overseeing the AI's interactions with biological systems.");
         System.out.println();//spacing for readability
@@ -59,7 +75,6 @@ public class RandomMars //name/title Red Harvest
         System.out.println();//spacing for readablity
 
         System.out.println("Your goal: Access GAIA's core logs and regain control over RP.");
-        System.out.println("Your actions will score System Stability Points (SSP) which bgein at 50. If you fall below 0, GAIA locks you out completely.");
         System.out.println();//spacing for readablity
 
         System.out.println("Decision Point 1: Location of Access Attempt. You need a terminal to access GAIA's hidden logs. Where do you start?");
@@ -70,8 +85,8 @@ public class RandomMars //name/title Red Harvest
         System.out.println("\nChoice 2: Lab Bay Terminal. Moderate risk, moderate reward.\n");//Moderate security. +5 SSP on success, -5 on failure
         System.out.println("\nChoice 3: Airlock Storage Laptop (offline). Low risk, low reward\n");//incomplete logs. +3 SSP on success, no penalty on failure
 
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+        Scanner input = new Scanner(System.in);
+        int choice = input.nextInt();
 
         // Use a switch statement to handle the user's choice
         switch(choice)
@@ -156,7 +171,7 @@ public class RandomMars //name/title Red Harvest
 
             default:
                 System.out.println("Invalid choice. Please choose again.");
-                return Scenario1(); // call and return the method again for valid input
+                return Scenario1(); // call and return the method for valid input
         }
     } //end of scenario 1 method returning the result of user choice
 
@@ -165,17 +180,12 @@ public class RandomMars //name/title Red Harvest
         System.out.println("\t\tScenario 2: \"How Do You Engage GAIA?\"");
         System.out.println();//spacing for readablity
 
-        System.out.println("Your goal: Access GAIA's core logs and regain control over RP.");
-        System.out.println("Your actions will score System Stability Points (SSP) which bgein at 50. If you fall below 0, GAIA locks you out completely.");
-        System.out.println();//spacing for readablity
-
         System.out.println("Decision Point 2: Engage The AI to gain access.");
         System.out.println();//spacing for readability
 
-        //3 different choices for the user, with different risk levels.
-        System.out.println("\nChoice 1: Attempt to Reason with It.\n");//+1 to +3 SSP if persuasive, -2 if it perceives you as a threat
-        System.out.println("\nChoice 2: Exploit a Vulnerability.\n");//Random roll determines outcome: can give +3 or cause a lockdown: -3
-        System.out.println("\nChoice 3: Cut Power to GAIA's Sensor Subnet\n");//+2 or -4 SSP
+        System.out.println("\nChoice 1: Attempt to Reason with It.\n");//+10 SSP if persuasive, -10 if it perceives you as a threat
+        System.out.println("\nChoice 2: Exploit a Vulnerability.\n");//Random roll determines outcome: can give +5 or cause a lockdown: -5
+        System.out.println("\nChoice 3: Cut Power to GAIA's Sensor Subnet\n");//+3 or -0 SSP
 
 
         Scanner scanner = new Scanner(System.in);
@@ -267,53 +277,149 @@ public class RandomMars //name/title Red Harvest
                 return Scenario2(); // call and return the method again for valid input
         }
     } //end of scenario 2 method returning the result of user choice
-    /*Use logic and ethics to convince GAIA to release control.
 
-🔍 
-Use a known buffer overflow in GAIA’s voice parsing module to force admin access.
 
-🔌 Cut Power to GAIA’s Sensor Subnet
-Force a reboot, but risk cascading failure.
-(50/50 chance: +2 or -4 SSP)*/
+    public static String Scenario3() //start of scenario 3
+    {
+        System.out.println("\t\tScenario 3: \"Final Override Attempt\"");
+        System.out.println();//spacing for readablity
 
-/* Decision Point #3 – Final Override Attempt
+        System.out.println("You've found the script: terra_script_000. You must decide:");
+        System.out.println();//spacing
 
-You’ve found the script: terra_script_000. You must decide:
+        System.out.println("Decision Point 3: Final Attempt.");
+        System.out.println();//spacing for readability
 
-💣 Delete the Script
-Destroys whatever is running — but the data may be lost forever.
-(+3 SSP if successful, -2 if it triggers defensive protocol)
+        System.out.println("\nChoice 1: Delete the Script.\n");//+10 SSP, -10 
+        System.out.println("\nChoice 2: Run the Script in a Sandbox.\n");//+5 SSP if GAIA approves, -5 if hostile
+        System.out.println("\nChoice 3: Isolate and Copy It\n");//+3 SSP if successful, -0 if it fails.
 
-💾 Isolate and Copy It
-Secure a copy to external media, then quarantine it.
-(+2 SSP if successful, +1 bonus on future missions)
 
-🌱 Run the Script in a Sandbox
-Dangerous. You’ll see what GAIA was protecting — but it might react.
-(+4 SSP if GAIA approves, -5 if hostile)
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
 
-Outcome Ranges:
+        switch(choice)
+        {
+            case 1:
+                Dice();
+                if(result == 1 || result == 2 || result == 3)
+                {
+                    System.out.println("Result: Yikes! The defensive protocol was triggered and all data was lost.");//print for the user
+                    
+                    ssp -= 10;//decrease of points
+                    return "You lose 10 SSP."; 
+                }
 
-5+ SSP: Full system recovery; GAIA trusts you.
+                else if(result == 4 || result == 5)
+                {
+                    System.out.println("Result: Yay! You succeeded.");
+                    
+                    ssp += 10;//increase in points
+                    return "You gained 10 SSP.";
+                }
 
-1–4 SSP: Partial recovery; AI autonomy continues.
+                else if(result == 6)
+                {
+                    System.out.println("Result: You got the best outcome! As your reward you will gain an extra SSP.");
 
-0 or less: Lockout; GAIA assumes full control.
-*/
+                    ssp += 11;//increase of points plus a bonus
+                    return "You gained 11 SSP total!";
+                }
+
+            case 2:
+                Dice();
+                if(result == 1 || result == 2 || result == 3)
+                {
+                    System.out.println("Result: Yikes! While trying to see what GAIA was protecting, the system has a hostile reaction.");//print for the user
+                    
+                    ssp -= 5;//decrease of points
+                    return "You lose 5 SSP."; 
+                }
+
+                else if(result == 4 || result == 5)
+                {
+                    System.out.println("Result: Yay! You know now what GAIA is protecting.");
+                    
+                    ssp += 5;//increase of points
+                    return "You gained 5 SSP.";
+                }
+
+                else if(result == 6)
+                {
+                    System.out.println("Result: You got the best outcome! As your reward you will gain an extra SSP.");
+
+                    ssp += 6;//increase of points plus a bonus
+                    return "You gained 6 SSP total!";
+                }
+
+            case 3:
+                Dice();
+                if(result == 1 || result == 2 || result == 3)
+                {
+                    System.out.println("Result: Yikes! You were unable to secure a copy to an external media. You failed.");//print for the user
+                    
+                    ssp -= 0;//decrease of points
+                    return "You lose nothing.";
+                }
+
+                else if(result == 4 || result == 5)
+                {
+                    System.out.println("Result: Yay! A copy was able to be secured to an external media and quarantined.");
+                    
+                    ssp += 3;//increase of points
+                    return "You gained 3 SSP.";
+                }
+
+                else if(result == 6)
+                {
+                    System.out.println("Result: You got the best outcome! As your reward you will gain an extra SSP.");
+
+                    ssp += 4;//increase of points plus a bonus
+                    return "You gained 4 SSP total!";
+                }
+
+            default:
+                System.out.println("Invalid choice. Please choose again.");
+                return Scenario3();        
+}
+    } //end of scenario 3 method returning the result of user choice
+
 
     public static void main (String[] args)//beginging of main method
     {
         Intro();//calls intro method to print intro monologue
         System.out.println("Welcome Dr. Lira Halden, I hope the communte was up to par!");//extra background after user's arrival to Mars
         System.out.println("You have arrived to your station in the Ares Biosphere.");
-        System.out.println("This biosphere is Mars' first agricultural and life science outpost.");
         System.out.println();//spacing for readability
 
-        System.out.println("Your job: develop and maintain a system that monitors life sciences, while also supporting critical research.");
-        System.out.println("But a mysterious system anomaly is corrupting your experimental data, shutting down sensors, and endangering the mission.");
-        System.out.println("The biosphere's AI, GAIA, begins behaving strangely. Is it Martian interference, sabotage, or something entirely new?");
-        System.out.println();//spacing for readability
+        System.out.println("Your actions will score System Stability Points (SSP) which begin at 0, since you are a new face for GAIA. If you fall below 0, GAIA locks you out completely.");
+        System.out.println();//spacing for readablity
 
-        // Math.random();
+        Scenario1();
+        System.out.println("Your SSP after your first descion: " + ssp + "!");
+        System.out.println(); //spcaing
+
+        Scenario2();
+        System.out.println("Your SSP after your second descion: " + ssp + "!");
+        System.out.println(); //spcaing
+
+        Scenario3();
+        System.out.println("Your SSP after your final descion: " + ssp + "!");
+        System.out.println(); //spacing
+
+        if(ssp >= 17)
+        {
+            System.out.println("Full system recovery; GAIA trusts you.");
+        }
+
+        else if(ssp >= 1 && ssp <= 16)
+        {
+            System.out.println("Partial recovery; AI autonomy continues.");
+        }
+
+        else{
+            System.out.println("Lockout; GAIA assumes full control.");
+        }
+
     }
 }
